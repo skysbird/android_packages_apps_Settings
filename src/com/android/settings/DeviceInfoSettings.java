@@ -80,11 +80,12 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
 
         setStringSummary(KEY_FIRMWARE_VERSION, Build.VERSION.RELEASE);
         findPreference(KEY_FIRMWARE_VERSION).setEnabled(true);
-        setValueSummary(KEY_BASEBAND_VERSION, "gsm.version.baseband");
+        //setValueSummary(KEY_BASEBAND_VERSION, "gsm.version.baseband");
+        setValueSummary(KEY_BASEBAND_VERSION, "ril.sw_ver");//for E120L fix
         setStringSummary(KEY_DEVICE_MODEL, Build.MODEL + getMsvSuffix());
         setValueSummary(KEY_EQUIPMENT_ID, PROPERTY_EQUIPMENT_ID);
         setStringSummary(KEY_DEVICE_MODEL, Build.MODEL);
-        setStringSummary(KEY_BUILD_NUMBER, Build.DISPLAY);
+        setStringSummary(KEY_BUILD_NUMBER, Build.DISPLAY+".sky.mc");
         findPreference(KEY_KERNEL_VERSION).setSummary(getFormattedKernelVersion());
         setValueSummary(KEY_MOD_VERSION, "ro.cm.version");
         findPreference(KEY_MOD_VERSION).setEnabled(true);
@@ -197,6 +198,14 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
         }
     }
 
+    private void getStringSummary(String preference, String value) {
+        try {
+            findPreference(preference).setSummary(value);
+        } catch (RuntimeException e) {
+            findPreference(preference).setSummary(
+                getResources().getString(R.string.device_info_default));
+        }
+    }
     private void setStringSummary(String preference, String value) {
         try {
             findPreference(preference).setSummary(value);
