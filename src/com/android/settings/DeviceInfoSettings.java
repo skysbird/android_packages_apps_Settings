@@ -60,7 +60,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
     private static final String KEY_KERNEL_VERSION = "kernel_version";
     private static final String KEY_BUILD_NUMBER = "build_number";
     private static final String KEY_DEVICE_MODEL = "device_model";
-    private static final String KEY_BASEBAND_VERSION = "ril.sw_ver";
+    private static final String KEY_BASEBAND_VERSION = "ril.sw_ver";//E120L fix
     private static final String KEY_FIRMWARE_VERSION = "firmware_version";
     private static final String KEY_UPDATE_SETTING = "additional_system_update_settings";
     private static final String KEY_MOD_VERSION = "mod_version";
@@ -69,7 +69,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
     private static final String KEY_DEVICE_MEMORY = "device_memory";
     private static final String KEY_EQUIPMENT_ID = "fcc_equipment_id";
     private static final String PROPERTY_EQUIPMENT_ID = "ro.ril.fccid";
-
+    
     long[] mHits = new long[3];
 
     @Override
